@@ -11,7 +11,15 @@ RUN apk update && apk add --no-cache \
     zip \
     curl \
     mysql-client \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+    autoconf \
+    g++ \
+    make \
+    nodejs \
+    npm \
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
+    && apk del autoconf g++ make
 
 # Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -40,7 +48,13 @@ RUN apk update && apk add --no-cache \
     curl \
     mysql-client \
     bash \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+    autoconf \
+    g++ \
+    make \
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
+    && apk del autoconf g++ make
 
 # Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer

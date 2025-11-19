@@ -12,18 +12,22 @@ Sistema de pagamentos em Laravel com suporte a transações Pix e Saques, utiliz
 ## Rodando Localmente (com Docker)
 
 ### Pré-requisitos
+
 - Docker e Docker Compose instalados
 - Git
 
 ### Passos para Iniciar o Projeto pela Primeira Vez
 
 1. **Clone o repositório:**
+
    ```bash
-   git clone <url-do-repositorio>
+   git clone https://github.com/The-MrFalcon/desafio-pagamentos-laravel
    cd desafio-pagamentos-laravel
+   code .
    ```
 
 2. **Configure o ambiente:**
+
    - Copie o arquivo de exemplo de configuração:
      ```bash
      cp .env.example .env
@@ -31,22 +35,28 @@ Sistema de pagamentos em Laravel com suporte a transações Pix e Saques, utiliz
    - Edite o `.env` e ajuste as variáveis de ambiente, como `APP_KEY`, `DB_HOST=db` (para Docker), e outras credenciais necessárias.
 
 3. **Instale as dependências do PHP:**
+
    ```bash
    composer install
    ```
 
 4. **Suba os containers Docker:**
+
    ```bash
    docker-compose up -d --build
    ```
+
    Isso irá construir e iniciar os serviços: app (Laravel), db (MySQL) e redis.
 
 5. **Execute as migrações do banco de dados:**
+
    ```bash
+   php artisan key:generate
    docker-compose exec app php artisan migrate
    ```
 
 6. **(Opcional) Execute os seeders para dados de teste:**
+
    ```bash
    docker-compose exec app php artisan db:seed
    ```
@@ -58,14 +68,17 @@ Sistema de pagamentos em Laravel com suporte a transações Pix e Saques, utiliz
 ## Endpoints Principais
 
 ### Pix
+
 - `POST /api/pix` - Criar transação Pix
 - `GET /api/pix/{id}` - Consultar status da transação Pix
 
 ### Saques (Withdraw)
+
 - `POST /api/withdraw` - Solicitar saque
 - `GET /api/withdraw/{id}` - Consultar status do saque
 
 ### Outros
+
 - Webhooks são processados assincronamente via Jobs.
 
 ## Estrutura do Projeto
@@ -85,6 +98,7 @@ Sistema de pagamentos em Laravel com suporte a transações Pix e Saques, utiliz
 ## Testes
 
 Execute os testes com:
+
 ```bash
 docker-compose exec app php artisan test
 ```
