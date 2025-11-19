@@ -1,0 +1,18 @@
+{
+  "name": "super/desafio-subadquirentes",
+  "description": "Desafio Super - integração com subadquirentes (skeleton)",
+  "require": {
+    "php": "^8.1",
+    "laravel/framework": "^11.0",
+    "guzzlehttp/guzzle": "^7.0",
+    "predis/predis": "^2.0",
+    "fakerphp/faker": "^1.24"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Database\\Seeders\\": "database/seeders/",
+      "Database\\Factories\\": "database/factories/"
+    }
+  }
+}

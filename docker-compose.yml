@@ -1,0 +1,25 @@
+services:
+  app:
+    build: .
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - db
+      - redis
+    ports:
+      - '8000:8000'
+    command: bash -lc "composer install || true; php artisan migrate --seed || true; php artisan serve --host=0.0.0.0 --port=8000"
+    environment:
+      - APP_KEY=${APP_KEY}
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: super_desafio
+    ports:
+      - '3306:3306'
+  redis:
+    image: redis:7
+    ports:
+      - '6379:6379'
