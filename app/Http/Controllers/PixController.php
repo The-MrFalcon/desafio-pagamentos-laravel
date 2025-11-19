@@ -19,6 +19,11 @@ class PixController extends Controller
             'payer.name' => 'required|string',
             'payer.cpf_cnpj' => 'required|string',
             'expires_in' => 'required|integer',
+            'account' => 'nullable|array',
+            'account.bank_code' => 'nullable|string',
+            'account.agencia' => 'nullable|string',
+            'account.conta' => 'nullable|string',
+            'account.type' => 'nullable|string',
         ]);
 
         $user = User::find(1); // Assume test user

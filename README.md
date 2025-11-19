@@ -70,12 +70,38 @@ Sistema de pagamentos em Laravel com suporte a transações Pix e Saques, utiliz
 ### Pix
 
 - `POST /api/pix` - Criar transação Pix
-- `GET /api/pix/{id}` - Consultar status da transação Pix
+
+```json
+{
+  "merchant_id": "m123",
+  "amount": 12345,
+  "currency": "BRL",
+  "order_id": "order_001",
+  "payer": {
+    "name": "Fulano",
+    "cpf_cnpj": "00000000000"
+  },
+  "expires_in": 3600
+}
+```
 
 ### Saques (Withdraw)
 
 - `POST /api/withdraw` - Solicitar saque
-- `GET /api/withdraw/{id}` - Consultar status do saque
+
+```json
+{
+  "merchant_id": "m123",
+  "account": {
+    "bank_code": "001",
+    "agencia": "1234",
+    "conta": "00012345",
+    "type": "checking"
+  },
+  "amount": 5000,
+  "transaction_id": "mock_pix_691d0cc2e3190"
+}
+```
 
 ### Outros
 
@@ -104,3 +130,7 @@ docker-compose exec app php artisan test
 ```
 
 --
+
+## Possíveis coisas a fazer
+
+- Cadastro completo com todas as informações

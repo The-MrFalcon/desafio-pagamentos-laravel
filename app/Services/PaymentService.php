@@ -51,7 +51,7 @@ class PaymentService
             'metadata' => $resp,
         ]);
 
-        DispatchWebhookJob::dispatch($user->subadquirente, $resp, $wd->id);
+        DispatchWebhookJob::dispatch($user->subadquirente, $resp, $wd->id, $payload['account'] ?? null, 'withdraw');
 
         return $wd->fresh();
     }
@@ -72,7 +72,7 @@ class PaymentService
             'metadata' => $resp,
         ]);
 
-        DispatchWebhookJob::dispatch($user->subadquirente, $resp, $pix->id);
+        DispatchWebhookJob::dispatch($user->subadquirente, $resp, $pix->id, $payload['account'] ?? null);
 
         return $resp;
     }

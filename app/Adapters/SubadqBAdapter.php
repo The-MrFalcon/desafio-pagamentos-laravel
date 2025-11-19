@@ -17,7 +17,7 @@ class SubadqBAdapter implements AdapterInterface
     {
         // Always return mock response for testing
         return [
-            'transaction_id' => 'mock_pix_' . uniqid(),
+            'pix_id' => 'mock_pix_' . uniqid(),
             'location' => 'https://example.com/pix/' . uniqid(),
             'qrcode' => 'mock_qr_code_' . uniqid(),
             'expires_at' => Carbon::now()->addMinutes(30)->toISOString(),
