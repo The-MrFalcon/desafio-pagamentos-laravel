@@ -5,7 +5,6 @@ Sistema de pagamentos em Laravel com suporte a transações Pix e Saques, utiliz
 ## Visão Geral
 
 - Laravel 12
-- Autenticação JWT
 - Suporte a Pix e Saques
 - Processamento assíncrono com Jobs e Redis
 - Docker Compose para ambiente local
